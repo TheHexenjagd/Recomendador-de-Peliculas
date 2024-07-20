@@ -116,6 +116,11 @@ Si deseas contribuir a este proyecto, por favor sigue estos pasos:
 4. Sube los cambios a tu repositorio (`git push origin feature/nueva-funcionalidad`).
 5. Crea un Pull Request.
 
+# Ramas
+
+- La rama old_versions incluye versiones beta de prueba del desarollo y su avance.
+- La rama limite_peliculas incluye funcionalidad para limitar la cantidad de películas mostradas por búsqueda (Es un poco inestable).
+
 ## Licencia
 
 Este proyecto está bajo la Licencia MIT. Para más detalles, consulta el archivo [LICENSE](LICENSE).
