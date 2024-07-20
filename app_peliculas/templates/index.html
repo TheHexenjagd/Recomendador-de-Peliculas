@@ -30,6 +30,10 @@
                             <option value="en">Inglés</option>
                         </select>
                     </div>
+                    <div class="limit-options">
+                        <label for="limitInput">Límite de películas (0 para sin límite):</label>
+                        <input type="number" id="limitInput" class="form-control" value="0" min="0">
+                    </div>
                     <button id="searchButton" class="btn btn-primary" onclick="buscarPeliculas()" disabled>Buscar</button>
                     <button class="btn btn-secondary" onclick="buscarPeliculasAleatorias()">Buscar película aleatoria</button>
                 </div>

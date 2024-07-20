@@ -9,27 +9,19 @@ import json
 import random
 
 # Configurar el registro de depuración
+logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 def index(request):
-    """Renderiza la página principal."""
     return render(request, 'index.html')
 
 def extract_titles_from_response(raw_text):
-    """
-    Extrae títulos de películas del texto crudo de la respuesta del modelo.
-    
-    Args:
-        raw_text (str): Texto crudo recibido del modelo.
-
-    Returns:
-        list: Lista de títulos de películas extraídos.
-    """
+    """Extrae títulos de películas del texto crudo de la respuesta del modelo."""
     try:
         # Reemplazar secuencias de escape y normalizar saltos de línea
         cleaned_text = raw_text.replace('\\n', '\n').replace('\\u0026', '&')
 
-        # Extraer el contenido relevante del campo 'response' si existe
+        # Extraer el contenido relevante del campo 'response'
         if 'response' in cleaned_text:
             response_content = cleaned_text.split('response":"')[1].split('"done":')[0]
             response_content = response_content.replace('\\n', '\n').replace('\\u0026', '&')
@@ -45,17 +37,7 @@ def extract_titles_from_response(raw_text):
         return []
 
 def translate_text(text, target_language='es', model_name='llama3'):
-    """
-    Traduce el texto al idioma objetivo usando el modelo especificado.
-
-    Args:
-        text (str): Texto a traducir.
-        target_language (str): Idioma objetivo para la traducción (por defecto 'es' para español).
-        model_name (str): Nombre del modelo de traducción (por defecto 'llama3').
-
-    Returns:
-        str: Texto traducido.
-    """
+    """Traduce el texto al idioma objetivo usando el modelo especificado."""
     try:
         # Llamar a la API de traducción del modelo
         response = requests.post('http://localhost:11434/api/generate', json={
@@ -73,15 +55,6 @@ def translate_text(text, target_language='es', model_name='llama3'):
         return text  # Retornar el texto original en caso de error
 
 def search_movies(request):
-    """
-    Busca películas basadas en la consulta proporcionada.
-
-    Args:
-        request (HttpRequest): Solicitud HTTP que contiene los parámetros de búsqueda.
-
-    Returns:
-        JsonResponse: Respuesta en formato JSON con la lista de películas encontradas.
-    """
     query = request.GET.get('query', '')
     language = request.GET.get('language', 'es')
     model_name = request.GET.get('model', 'llama3')
@@ -203,15 +176,6 @@ def search_movies(request):
         }, status=500)
 
 def search_random_movie(request):
-    """
-    Busca una película aleatoria y muestra sus detalles.
-
-    Args:
-        request (HttpRequest): Solicitud HTTP para buscar una película aleatoria.
-
-    Returns:
-        JsonResponse: Respuesta en formato JSON con los detalles de la película aleatoria.
-    """
     language = request.GET.get('language', 'es')
     model_name = request.GET.get('model', 'llama3')
 

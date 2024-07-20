@@ -45,10 +45,14 @@ body {
     border-radius: 0px;
 }
 
-.translation-options {
+.translation-options, .limit-options {
     margin-bottom: 10px;
 }
 
 .btn-primary {
     margin-top: 10px;
+}
+
+#limitInput {
+    width: 100%;
 }

@@ -7,11 +7,12 @@ function buscarPeliculas() {
     const query = document.getElementById('query').value;
     const language = document.getElementById('languageSelect').value;
     const model = document.getElementById('modelSelect').value;
+    const limit = document.getElementById('limitInput').value;
     const resultadosDiv = document.getElementById('resultados');
 
     resultadosDiv.innerHTML = 'Buscando...';
 
-    fetch(`/search/?query=${encodeURIComponent(query)}&language=${encodeURIComponent(language)}&model=${encodeURIComponent(model)}`)
+    fetch(`/search/?query=${encodeURIComponent(query)}&language=${encodeURIComponent(language)}&model=${encodeURIComponent(model)}&limit=${encodeURIComponent(limit)}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`Error en la respuesta del servidor: ${response.statusText}`);
@@ -81,7 +82,6 @@ function buscarPeliculasAleatorias() {
                     output += '<h2>Recomendaciones del modelo:</h2>';
                     output += `<p>${recommendations.replace(/\n/g, '<br>')}</p>`;
                 }
-
                 resultadosDiv.innerHTML = output;
             }
         })
