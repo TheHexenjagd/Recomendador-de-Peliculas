@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin: 0;
+    background-image: url('../images/bg.jpg'); /* Ruta relativa desde el CSS */
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh; /* Asegura que el cuerpo ocupe toda la altura del viewport */
+}
+
+.container-fluid {
+    height: 100vh; /* Asegura que el contenedor ocupe toda la altura de la ventana */
+    padding: 0; /* Elimina el padding por defecto */
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 10px;
+    height: 100%; /* Ocupa toda la altura del contenedor */
+}
+
+.search-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.97); /* Fondo blanco con opacidad para mejorar la legibilidad */
+    border-radius: 0px;
+}
+
+.search-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.container-title {
+    margin-bottom: 10px;
+}
+
+.results-container {
+    padding: 20px;
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.97); /* Fondo blanco con opacidad para mejorar la legibilidad */
+    border-radius: 0px;
+}
+
+.translation-options {
+    margin-bottom: 10px;
+}
+
+.btn-primary {
+    margin-top: 10px;
+}
